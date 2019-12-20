@@ -1,0 +1,8 @@
+SELECT 
+[N1],[N2],[N3],[N4],[N5],[N6],
+
+--INICIO PROMEDIO
+(CAST(N1 AS INT) + CAST(N2 AS INT) + CAST(N3 AS INT) + CAST(N4 AS INT) + CAST(N5 AS INT) + CAST(N6 AS INT))/6 as Promedio
+--FIN PROMEDIO
+
+FROM [ALLQ6].[dbo].[q6.sorteos.29mar16]

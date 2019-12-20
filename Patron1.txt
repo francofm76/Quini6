@@ -1,0 +1,100 @@
+--MASSALIDORESTOTAL
+
+SELECT NRO, COUNT(NRO) VECES FROM
+(SELECT N1 NRO FROM [Q6].[Q6].[6jul17]
+UNION ALL
+SELECT N2 NRO FROM [Q6].[Q6].[6jul17]
+UNION ALL
+SELECT N3 NRO FROM [Q6].[Q6].[6jul17]
+UNION ALL
+SELECT N4 NRO FROM [Q6].[Q6].[6jul17]
+UNION ALL
+SELECT N5 NRO FROM [Q6].[Q6].[6jul17]
+UNION ALL
+SELECT N6 NRO FROM [Q6].[Q6].[6jul17]) T
+GROUP BY NRO
+order by VECES desc;
+/*======================*/
+--Tradicional,2daVuelta,Revancha (Pozo Extra)
+
+SELECT NRO, COUNT(NRO) VECES FROM
+(SELECT N1 NRO FROM [Q6].[Q6].[6jul17]
+where [TipoSorteo] in ('Tradicional','SegundaVuelta','Revancha')
+UNION ALL
+SELECT n2 NRO FROM [Q6].[Q6].[6jul17]
+where [TipoSorteo] in ('Tradicional','SegundaVuelta','Revancha')
+UNION ALL
+SELECT n3 NRO FROM [Q6].[Q6].[6jul17]
+where [TipoSorteo] in ('Tradicional','SegundaVuelta','Revancha')
+UNION ALL
+SELECT n4 NRO FROM [Q6].[Q6].[6jul17]
+where [TipoSorteo] in ('Tradicional','SegundaVuelta','Revancha')
+UNION ALL
+SELECT n5 NRO FROM [Q6].[Q6].[6jul17]
+where [TipoSorteo] in ('Tradicional','SegundaVuelta','Revancha')
+UNION ALL
+SELECT n6 NRO FROM [Q6].[Q6].[6jul17]
+where [TipoSorteo] in ('Tradicional','SegundaVuelta','Revancha')) T
+GROUP BY NRO
+order by VECES desc;
+/*==============================*/
+SELECT NRO, COUNT(NRO) VECES FROM
+(SELECT N1 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Tradicional'
+UNION ALL
+SELECT n2 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Tradicional'
+UNION ALL
+SELECT n3 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Tradicional'
+UNION ALL
+SELECT n4 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Tradicional'
+UNION ALL
+SELECT n5 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Tradicional'
+UNION ALL
+SELECT n6 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Tradicional') T
+GROUP BY NRO
+order by VECES desc;
+/*==============================*/
+SELECT NRO, COUNT(NRO) VECES FROM
+(SELECT N1 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SegundaVuelta'
+UNION ALL
+SELECT n2 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SegundaVuelta'
+UNION ALL
+SELECT n3 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SegundaVuelta'
+UNION ALL
+SELECT n4 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SegundaVuelta'
+UNION ALL
+SELECT n5 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SegundaVuelta'
+UNION ALL
+SELECT n6 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SegundaVuelta') T
+GROUP BY NRO
+order by VECES desc;
+/*==============================*/
+SELECT NRO, COUNT(NRO) VECES FROM
+(SELECT N1 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Revancha'
+UNION ALL
+SELECT n2 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Revancha'
+UNION ALL
+SELECT n3 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Revancha'
+UNION ALL
+SELECT n4 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Revancha'
+UNION ALL
+SELECT n5 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Revancha'
+UNION ALL
+SELECT n6 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'Revancha') T
+GROUP BY NRO
+order by VECES desc;
+/*==============================*/
+SELECT NRO, COUNT(NRO) VECES FROM
+(SELECT N1 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SiempreSale'
+UNION ALL
+SELECT n2 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SiempreSale'
+UNION ALL
+SELECT n3 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SiempreSale'
+UNION ALL
+SELECT n4 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SiempreSale'
+UNION ALL
+SELECT n5 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SiempreSale'
+UNION ALL
+SELECT n6 NRO FROM [Q6].[Q6].[6jul17] WHERE [TipoSorteo] = 'SiempreSale') T
+GROUP BY NRO
+order by VECES desc;
+/*==============================*/

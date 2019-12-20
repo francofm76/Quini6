@@ -1,0 +1,49 @@
+http://sqlbump.blogspot.com.ar/2010/06/sum-of-digits-of-number.html
+
+create function fn_sumdigit 
+(
+    @number    int
+)
+
+returns    int
+as
+begin
+    declare    @sum    int
+
+    ;with cte
+    as
+    (
+        select    number    = @number / 10, digit = @number % 10
+        union all
+        select    number = number / 10, digit = number % 10
+        from    cte
+        where    number    > 0
+    )
+    select    @sum = sum(digit)
+    from    cte
+    return    @sum
+end
+go
+---------------------------------------
+create function fn_sumdigit2   
+(      
+@number    BIGINT  
+)   
+ returns    BIGINT  
+as  
+begin      
+declare    @sum    BIGINT        
+;with cte     
+ as      
+(          
+select    number    = @number / 10, digit = @number % 10          
+union all         
+select    number = number / 10, digit = number % 10         
+from    cte          
+where    number    > 0      
+)     
+ select    @sum = sum(digit)      
+from    cte      
+return    @sum  
+end  
+---------------------------------------

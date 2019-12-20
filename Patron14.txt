@@ -1,0 +1,10 @@
+SELECT 
+/*Inicio Restas*/
+CAST(N2 AS INT) - CAST(N1 AS INT) as N2menosN1,
+CAST(N3 AS INT) - CAST(N2 AS INT) as N3menosN2,
+CAST(N4 AS INT) - CAST(N3 AS INT) as N4menosN3,
+CAST(N5 AS INT) - CAST(N4 AS INT) as N5menosN4,
+CAST(N6 AS INT) - CAST(N5 AS INT) as N6menosN5
+/*Fin Restas*/
+
+FROM [ALLQ6].[dbo].[q6.sorteos.29mar16]

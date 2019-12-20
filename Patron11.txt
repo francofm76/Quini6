@@ -1,0 +1,50 @@
+--Promedio de todas las combinaciones
+SELECT 
+AVG(CAST([N1] AS INT)) as PromedioN1,
+AVG(CAST([N2] AS INT)) as PromedioN2,
+AVG(CAST([N3] AS INT)) as PromedioN3,
+AVG(CAST([N4] AS INT)) as PromedioN4,
+AVG(CAST([N5] AS INT)) as PromedioN5,
+AVG(CAST([N6] AS INT)) as PromedioN6
+FROM [Q6].[Q6].[6jul17]
+/*------------------------------*/
+SELECT 
+AVG(CAST([N1] AS INT)) as PromedioN1,
+AVG(CAST([N2] AS INT)) as PromedioN2,
+AVG(CAST([N3] AS INT)) as PromedioN3,
+AVG(CAST([N4] AS INT)) as PromedioN4,
+AVG(CAST([N5] AS INT)) as PromedioN5,
+AVG(CAST([N6] AS INT)) as PromedioN6
+FROM [Q6].[Q6].[6jul17]
+WHERE [TipoSorteo] = 'Tradicional'
+/*------------------------------*/
+SELECT 
+AVG(CAST([N1] AS INT)) as PromedioN1,
+AVG(CAST([N2] AS INT)) as PromedioN2,
+AVG(CAST([N3] AS INT)) as PromedioN3,
+AVG(CAST([N4] AS INT)) as PromedioN4,
+AVG(CAST([N5] AS INT)) as PromedioN5,
+AVG(CAST([N6] AS INT)) as PromedioN6
+FROM [Q6].[Q6].[6jul17]
+WHERE [TipoSorteo] = 'SegundaVuelta'
+/*------------------------------*/
+SELECT 
+AVG(CAST([N1] AS INT)) as PromedioN1,
+AVG(CAST([N2] AS INT)) as PromedioN2,
+AVG(CAST([N3] AS INT)) as PromedioN3,
+AVG(CAST([N4] AS INT)) as PromedioN4,
+AVG(CAST([N5] AS INT)) as PromedioN5,
+AVG(CAST([N6] AS INT)) as PromedioN6
+FROM [Q6].[Q6].[6jul17]
+ WHERE [TipoSorteo] = 'Revancha'
+/*------------------------------*/
+SELECT 
+AVG(CAST([N1] AS INT)) as PromedioN1,
+AVG(CAST([N2] AS INT)) as PromedioN2,
+AVG(CAST([N3] AS INT)) as PromedioN3,
+AVG(CAST([N4] AS INT)) as PromedioN4,
+AVG(CAST([N5] AS INT)) as PromedioN5,
+AVG(CAST([N6] AS INT)) as PromedioN6
+FROM [Q6].[Q6].[6jul17]
+WHERE [TipoSorteo] = 'SiempreSale'
+/*------------------------------*/

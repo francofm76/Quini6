@@ -1,0 +1,88 @@
+--alter table [Q6].[Q6].[6jul17] add idserie int identity(1,1)
+
+Declare @tblConteos TABLE(Repeticiones int, Numeros varchar(30), Orden varchar(10))
+
+/* Conocer Parejas*/
+;WITH SEMILLA AS (Select [idserie] as Serie, Numero from [Q6].[Q6].[6jul17]
+UNPIVOT(Numero FOR Numeros in (N1, N2, N3, N4, N5, N6)) as Num)
+, SERIES2 AS (Select TOP 100 PERCENT S1.Serie, S1.Numero as Numero1, S2.Numero as Numero2 
+FROM SEMILLA AS S1
+	CROSS JOIN 
+	SEMILLA AS S2
+WHERE S2.Serie = S1.Serie AND S2.Numero <> S1.Numero AND S2.Numero > S1.Numero 
+ORDER BY S1.Numero)
+insert into @tblConteos
+SELECT COUNT(DISTINCT(Serie)) AS Repeticiones, Numero1 + ',' + Numero2 as Parejas, 'Parejas'
+FROM SERIES2 
+GROUP BY Numero1, Numero2
+HAViNG COUNT(DISTINCT(Serie))>1
+
+/*
+/*Trios*/
+;WITH SEMILLA AS (Select [idserie] as Serie, Numero from [Q6].[Q6].[6jul17] 
+UNPIVOT(Numero FOR Numeros in (N1, N2, N3, N4, N5, N6)) as Num)
+, SERIES3 AS (Select TOP 100 PERCENT S1.Serie, S1.Numero as Numero1, S2.Numero as Numero2, S3.Numero as Numero3  
+FROM SEMILLA AS S1
+	CROSS JOIN 
+	SEMILLA AS S2
+	CROSS JOIN 
+	SEMILLA AS S3
+WHERE S1.Serie = S2.Serie AND S1.Numero <> S2.Numero AND S1.Numero < S2.Numero 
+	AND S2.Serie = S3.Serie AND S2.Numero <> S3.Numero AND S2.Numero < S3.Numero
+ORDER BY S1.Numero)
+INSERT INTO @tblConteos
+SELECT COUNT(DISTINCT(Serie)) AS Repeticiones, Numero1 + ',' + Numero2 + ',' + Numero3 as Trios, 'Trios'
+FROM SERIES3 
+GROUP BY Numero1, Numero2, Numero3
+HAViNG COUNT(DISTINCT(Serie))>1
+
+/*Cuartetos*/
+;WITH SEMILLA AS (Select [idserie] as Serie, Numero from [Q6].[Q6].[6jul17] 
+UNPIVOT(Numero FOR Numeros in (N1, N2, N3, N4, N5, N6)) as Num)
+, SERIES4 AS (Select TOP 100 PERCENT S1.Serie, S1.Numero as Numero1, S2.Numero as Numero2, S3.Numero as Numero3, S4.Numero as Numero4  
+FROM SEMILLA AS S1
+	CROSS JOIN 
+	SEMILLA AS S2
+	CROSS JOIN 
+	SEMILLA AS S3
+	CROSS JOIN 
+	SEMILLA AS S4
+WHERE S1.Serie = S2.Serie AND S1.Numero <> S2.Numero AND S1.Numero < S2.Numero 
+	AND S2.Serie = S3.Serie AND S2.Numero <> S3.Numero AND S2.Numero < S3.Numero
+	AND S3.Serie = S4.Serie AND S3.Numero <> S4.Numero AND S3.Numero < S4.Numero
+ORDER BY S1.Numero)
+INSERT INTO @tblConteos
+SELECT COUNT(DISTINCT(Serie)) AS Repeticiones, Numero1 + ',' + Numero2 + ',' + Numero3 + ',' + Numero4 as Cuartetos, 'Cuartetos'
+FROM SERIES4 
+GROUP BY Numero1, Numero2, Numero3, Numero4
+HAViNG COUNT(DISTINCT(Serie))>1
+
+/*Quintetos*/
+;WITH SEMILLA AS (Select [idserie] as Serie, Numero from [Q6].[Q6].[6jul17] 
+UNPIVOT(Numero FOR Numeros in (N1, N2, N3, N4, N5, N6)) as Num)
+, SERIES5 AS (Select TOP 100 PERCENT S1.Serie, S1.Numero as Numero1, S2.Numero as Numero2, S3.Numero as Numero3, S4.Numero as Numero4, S5.Numero as Numero5 
+FROM SEMILLA AS S1
+	CROSS JOIN 
+	SEMILLA AS S2
+	CROSS JOIN 
+	SEMILLA AS S3
+	CROSS JOIN 
+	SEMILLA AS S4
+	CROSS JOIN 
+	SEMILLA AS S5
+WHERE S1.Serie = S2.Serie AND S1.Numero <> S2.Numero AND S1.Numero < S2.Numero 
+	AND S2.Serie = S3.Serie AND S2.Numero <> S3.Numero AND S2.Numero < S3.Numero
+	AND S3.Serie = S4.Serie AND S3.Numero <> S4.Numero AND S3.Numero < S4.Numero
+	AND S4.Serie = S5.Serie AND S4.Numero <> S5.Numero AND S4.Numero < S5.Numero
+ORDER BY S1.Numero)
+INSERT INTO @tblConteos
+SELECT COUNT(DISTINCT(Serie)) AS Repeticiones, Numero1 + ',' + Numero2 + ',' + Numero3 + ',' + Numero4 + ',' + Numero5 as Quintetos, 'Quintetos'
+FROM SERIES5 
+GROUP BY Numero1, Numero2, Numero3, Numero4, Numero5
+HAViNG COUNT(DISTINCT(Serie))>1
+*/
+
+SELECT REPETICIONES, NUMEROS FROM @tblConteos where orden = 'PAREJAS' ORDER BY REPETICIONES DESC
+--SELECT REPETICIONES, NUMEROS FROM @tblConteos where orden = 'TRIOS' ORDER BY REPETICIONES DESC
+--SELECT REPETICIONES, NUMEROS FROM @tblConteos where orden = 'CUARTETOS' ORDER BY REPETICIONES DESC
+--SELECT REPETICIONES, NUMEROS FROM @tblConteos where orden = 'QUINTETOS' ORDER BY REPETICIONES DESC

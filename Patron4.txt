@@ -1,0 +1,8 @@
+SELECT 
+[N1],[N2],[N3],[N4],[N5],[N6],
+
+--INICIO PAR/IMPAR
+[N1]%2 AS ParIm1,[N2]%2 AS ParIm2,[N3]%2 AS ParIm3,[N4]%2 AS ParIm4,[N5]%2 AS ParIm5,[N6]%2 AS ParIm6
+--FIN PAR/IMPAR
+
+FROM [ALLQ6].[dbo].[q6.sorteos.29mar16]

@@ -1,0 +1,13 @@
+SELECT 
+[N1],[N2],[N3],[N4],[N5],[N6],
+
+/* INICIO LastDigit*/
+      RIGHT([N1], 1) as UltimoN1,
+      RIGHT([N2], 1) as UltimoN2,
+      RIGHT([N3], 1) as UltimoN3,
+      RIGHT([N4], 1) as UltimoN4,
+      RIGHT([N5], 1) as UltimoN5,
+      RIGHT([N6], 1) as UltimoN6
+/* FIN LastDigit*/
+
+FROM [ALLQ6].[dbo].[q6.sorteos.29mar16]
